@@ -1,1 +1,4 @@
 __pycache__/
+workspace/
+# vnev folder
+env_algorithm/
