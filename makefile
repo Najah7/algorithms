@@ -1,7 +1,5 @@
-FILE ?= $(shell find . -name "*.py")
-
 format:
-	black $(FILE) && isort $(FILE)
+	ruff format ./Algorithm ./DataStructure && isort ./Algorithm ./DataStructure
 
 git_push:
 	make format && git push
