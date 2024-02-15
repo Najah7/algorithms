@@ -5,4 +5,5 @@ def openRussianDoll(doll):
         openRussianDoll(doll - 1)
         print(f"Doll {doll} opened")
 
+
 print(openRussianDoll(5))

@@ -3,6 +3,6 @@ def flatten(arr):
     for item in arr:
         if isinstance(item, list):
             result.extend(flatten(item))
-        else: 
+        else:
             result.append(item)
-    return result 
+    return result

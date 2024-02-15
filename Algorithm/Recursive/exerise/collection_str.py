@@ -7,20 +7,14 @@ def collect_strings(obj):
             result += collect_strings(obj[key])
     return result
 
+
 sample_dict = {
-  "stuff": 'foo',
-  "data": {
-    "val": {
-      "thing": {
-        "info": 'bar',
-        "moreInfo": {
-          "evenMoreInfo": {
-            "weMadeIt": 'baz'
-          }
+    "stuff": "foo",
+    "data": {
+        "val": {
+            "thing": {"info": "bar", "moreInfo": {"evenMoreInfo": {"weMadeIt": "baz"}}}
         }
-      }
-    }
-  }
+    },
 }
 
-print(collect_strings(sample_dict) == ['foo', 'bar', 'baz'])
+print(collect_strings(sample_dict) == ["foo", "bar", "baz"])

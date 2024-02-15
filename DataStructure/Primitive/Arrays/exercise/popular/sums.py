@@ -7,6 +7,7 @@ Check points
 - How big is the array?
 """
 
+
 # case: just for pairs
 def two_sum(arr, target):
     seen = {}
@@ -23,7 +24,6 @@ print(two_sum([2, 7, 11, 15], 9) == [0, 1])
 
 # codes below are solved by Dynamic Programming
 def sum_comb(arr, target):
-
     dp = [[]] * (target + 1)
 
     for i in range(1, target + 1):
