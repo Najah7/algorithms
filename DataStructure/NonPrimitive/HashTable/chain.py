@@ -35,7 +35,7 @@ class ChainedHashTable:
                 return current.value
             current = current.next
         return None  # key not found
-    
+
     def delete(self, key):
         index = self._hash(key)
         current = self.table[index]
@@ -49,7 +49,7 @@ class ChainedHashTable:
                 return
             previous = current
             current = current.next
-    
+
     def display(self):
         for i in range(self.size):
             current = self.table[i]

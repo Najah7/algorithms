@@ -32,6 +32,7 @@ class LinearAddressHashTable:
             else:
                 print(i, ":", "None")
 
+
 table = LinearAddressHashTable(10)
 table.insert(12)
 table.insert(25)
