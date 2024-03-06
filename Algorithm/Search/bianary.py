@@ -1,8 +1,8 @@
-def binary_search(sorted_arr: list, target: int): # O(log n)
+def binary_search(sorted_arr: list, target: int):  # O(log n)
     left = 0
     right = len(sorted_arr) - 1
 
-    while left <= right: # O(log n)
+    while left <= right:  # O(log n)
         mid = (left + right) // 2
         if sorted_arr[mid] == target:
             return mid

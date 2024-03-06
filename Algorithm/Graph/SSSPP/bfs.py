@@ -1,23 +1,21 @@
 class Graph:
-    
     def __init__(self, graph_dict=None) -> None:
         if graph_dict is None:
             graph_dict = {}
         self.graph_dict = graph_dict
 
-    def bfs(self, start, goal): # O(vertex + edge)
+    def bfs(self, start, goal):  # O(vertex + edge)
         queue = []
         queue.append([start])
-        while queue: # O(vertex)
+        while queue:  # O(vertex)
             path = queue.pop(0)
             last_visited = path[-1]
             if last_visited == goal:
                 return path
-            for adjacent in self.graph_dict.get(last_visited, []): # O(edge)
+            for adjacent in self.graph_dict.get(last_visited, []):  # O(edge)
                 new_path = list(path)
                 new_path.append(adjacent)
                 queue.append(new_path)
-                
 
 
 graph_dict = {

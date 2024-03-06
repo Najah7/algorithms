@@ -1,16 +1,16 @@
 """Dijkstra's Algorithm"""
-import typing as t
 import heapq
+import typing as t
+
 
 class Edge:
-    
     def __init__(self, weight, start: "Vertex", destination: "Vertex"):
         self.weight = weight
         self.start = start
         self.target_vertex = destination
 
+
 class Vertex:
-    
     def __init__(self, name):
         self.name: str = name
         self.visited: bool = False
@@ -20,25 +20,25 @@ class Vertex:
 
     def __lt__(self, other: "Vertex"):
         return self.min_distance < other.min_distance
-    
+
     def add_edge(self, weight, destination: "Vertex"):
         edge = Edge(weight, self, destination)
         self.neighbors.append(edge)
 
+
 class Dijkstra:
-    
     def __init__(self):
         self.heap: t.List[Vertex] = []
-    
-    def calculate(self, start: "Vertex"): # O((vertex + edge) * log(vertex))
+
+    def calculate(self, start: "Vertex"):  # O((vertex + edge) * log(vertex))
         start.min_distance = 0
         # NOTE: self.heap is empty, so we can't use heapq.heapify
-        heapq.heappush(self.heap, start) # O(1) <- first element
-        while self.heap: # O(vertex) 
-            current_vertex = heapq.heappop(self.heap) # O(log(vertex))
-            if current_vertex.visited: # for avoiding cycles
+        heapq.heappush(self.heap, start)  # O(1) <- first element
+        while self.heap:  # O(vertex)
+            current_vertex = heapq.heappop(self.heap)  # O(log(vertex))
+            if current_vertex.visited:  # for avoiding cycles
                 continue
-            for edge in current_vertex.neighbors: # O(edge)
+            for edge in current_vertex.neighbors:  # O(edge)
                 # u: current_vertex, v: target_vertex in the terminology of Dijkstra's algorithm
                 u = edge.start
                 v = edge.target_vertex
@@ -46,22 +46,23 @@ class Dijkstra:
                 if new_distance < v.min_distance:
                     v.predecessor = u
                     v.min_distance = new_distance
-                    heapq.heappush(self.heap, v) # O(log(vertex))
+                    heapq.heappush(self.heap, v)  # O(log(vertex))
             current_vertex.visited = True
-    
-    def get_shortest_path(self, target: "Vertex"): # O(vertex)
+
+    def get_shortest_path(self, target: "Vertex"):  # O(vertex)
         string = ""
         string += f"Shortest path to {target.name} costs {target.min_distance}\n"
         stack = ["Done"]
         node = target
         # from the target to the start
-        while node: # O(vertex)
+        while node:  # O(vertex)
             stack.append(f"{node.name}->")
             node = node.predecessor
         # from the start to the target
-        while stack: # O(vertex)
+        while stack:  # O(vertex)
             string += stack.pop()
         return string
+
 
 # vertices
 A = Vertex("A")

@@ -1,40 +1,40 @@
 class Graph:
-    
     def __init__(self, vertices):
         self.vertices = vertices
         self.graph = []
         self.nodes = []
-        
+
     def add_edge(self, start, dest, weight):
         self.graph.append([start, dest, weight])
-    
+
     def add_node(self, node):
         self.nodes.append(node)
-    
+
     def print_solution(self, dist):
         print("Vertex Distance from Source")
         for node in self.nodes:
             print(f"{node} \t\t {dist[node]}")
 
-    def bellman_ford(self, start): # O(vertex * edge)
-        dist = {i: float("inf") for i in self.nodes} # O(vertex)
+    def bellman_ford(self, start):  # O(vertex * edge)
+        dist = {i: float("inf") for i in self.nodes}  # O(vertex)
         dist[start] = 0
-        
-        for _ in range(self.vertices - 1): # O(vertex-1) -> O(vertex)
-            for start, dest, weight in self.graph: # O(edge)
+
+        for _ in range(self.vertices - 1):  # O(vertex-1) -> O(vertex)
+            for start, dest, weight in self.graph:  # O(edge)
                 dist_to_dest = dist[start] + weight
                 min_dist = min(dist[dest], dist_to_dest)
                 if dist[start] != float("inf") and dist_to_dest == min_dist:
                     dist[dest] = dist_to_dest
-        
-        for start, dest, weight in self.graph: # O(edge)
+
+        for start, dest, weight in self.graph:  # O(edge)
             dist_to_dest = dist[start] + weight
             min_dist = min(dist[dest], dist_to_dest)
             if dist[start] != float("inf") and dist_to_dest == min_dist:
                 print("Graph contains negative cycle")
                 break
-        
+
         self.print_solution(dist)
+
 
 graph = Graph(5)
 graph.add_node("A")
