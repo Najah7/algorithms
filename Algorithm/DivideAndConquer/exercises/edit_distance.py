@@ -22,12 +22,12 @@ NOTE:
 
 """
 
+# NOTE: this problem is that all operations have the same cost (actually, delete and insert have 2x cost)
 
 def convert_string(s1, s2, i, j):
-    # case: inserting, cost is 1 for each character
+    # we need to delete all the remaining characters in s1/s2
     if i == len(s1):
         return len(s2) - j
-    # case: deleting, cost is 1 for each character
     if j == len(s2):
         return len(s1) - i
     # go to the next character
