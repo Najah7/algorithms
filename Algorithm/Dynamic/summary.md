@@ -22,3 +22,4 @@ Dynamic Programming is a method for solving a complex problem by breaking it dow
 
 ## Note
 - Dynamic Programming is optimized Divide and Conquer.
+- tip to solve DP problem: "Think recursively, solve iteratively"(top-down -> bottom-up)

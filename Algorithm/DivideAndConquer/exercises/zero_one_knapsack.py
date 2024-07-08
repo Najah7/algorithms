@@ -31,6 +31,18 @@ def zo_knapsack(items: t.List[Item], capacity: int, i: int):
     leave = zo_knapsack(items, capacity, i + 1)
     return max(take, leave)
 
+def zo_knapsack_with_memo(items: t.List[Item], capacity: int, i: int, memo: t.Dict[t.Tuple[int, int], int]):
+    if i == len(items):
+        return 0
+    if items[i].weight > capacity:
+        return zo_knapsack_with_memo(items, capacity, i + 1, memo)
+    if (i, capacity) in memo:
+        return memo[(i, capacity)]
+    take = items[i].value + zo_knapsack_with_memo(items, capacity - items[i].weight, i + 1, memo)
+    leave = zo_knapsack_with_memo(items, capacity, i + 1, memo)
+    memo[(i, capacity)] = max(take, leave)
+    return memo[(i, capacity)]
+
 
 capacity = 10
 
